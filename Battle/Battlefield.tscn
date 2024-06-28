@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3agtqtqotecc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fn0um"]
+size = Vector2(1152, 146)
+
+[node name="Battlefield" type="Node2D"]
+
+[node name="PartyArea" type="Area2D" parent="."]
+position = Vector2(576, 576)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PartyArea"]
+shape = SubResource("RectangleShape2D_fn0um")
+
+[node name="ColorRect" type="ColorRect" parent="PartyArea"]
+offset_left = -576.0
+offset_top = -72.0
+offset_right = 576.0
+offset_bottom = 72.0

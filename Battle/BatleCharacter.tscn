@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://4fgpi22ih745"]
+
+[ext_resource type="Texture2D" uid="uid://p85afkogsni5" path="res://icon.svg" id="1_cv2hs"]
+[ext_resource type="Script" path="res://Battle/BatleCharacter.gd" id="1_pss86"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1urs7"]
+size = Vector2(128, 128)
+
+[node name="BattleCharacterIcon" type="Node2D"]
+script = ExtResource("1_pss86")
+
+[node name="Portrait" type="Sprite2D" parent="."]
+texture = ExtResource("1_cv2hs")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_1urs7")
