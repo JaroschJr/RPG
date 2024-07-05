@@ -1,18 +1,23 @@
 extends Node2D
 var BattleRef
-var Party
+var mousedOver
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var pMember = load("res://Battle/BatleCharacter.tscn")
+	mousedOver = false
 	BattleRef = get_node("/root/Battlefield")
-	var party = []
-	for i in range(7):
-		var member = pMember.instantiate()
-		party.append(member)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Input.is_action_just_pressed("click"):
+	if Input.is_action_just_pressed("click") && mousedOver:
 		print("it works")
+		
+func _on_area_2d_mouse_entered():
+	mousedOver = true
+	print("Mouse enters")
+
+
+func _on_area_2d_mouse_exited():
+	mousedOver = false
+	print("Mouse exits")
