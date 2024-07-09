@@ -11,7 +11,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if Input.is_action_just_pressed("click") && mousedOver:
-		print("it works")
+		BattleRef._center_char(self)
 		
 func _on_area_2d_mouse_entered():
 	mousedOver = true
@@ -21,3 +21,6 @@ func _on_area_2d_mouse_entered():
 func _on_area_2d_mouse_exited():
 	mousedOver = false
 	print("Mouse exits")
+	
+func _set_name(newName):
+	$CharacterName.text = newName

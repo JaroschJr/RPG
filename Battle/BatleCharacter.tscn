@@ -19,5 +19,11 @@ texture = ExtResource("2_ql2ck")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_f7krl")
 
+[node name="CharacterName" type="Label" parent="."]
+offset_left = -24.0
+offset_top = -64.0
+offset_right = 24.0
+offset_bottom = -41.0
+
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
