@@ -14,6 +14,7 @@ func _ready():
 		member._set_name(str(i))
 	#hubCoordinates = $PartyArea.get_global_transform()
 	_party_space()
+	center._open_ability_menu()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -33,7 +34,7 @@ func _party_space():
 		nextPosition = nextPosition + adjust
 		var pMem = party[x]
 		pMem.scale = Vector2(1,1)
-		tween.tween_property(pMem, "position" ,nextPosition,0.2).set_ease(Tween.EASE_OUT)
+		tween.tween_property(pMem, "position" ,nextPosition,0.15).set_ease(Tween.EASE_OUT)
 		#tween.tween_property(pMem, "position" ,hub,0.2).set_ease(Tween.EASE_OUT)
 	center = party[3]
 	center.scale = Vector2(1.2,1.2)
@@ -46,9 +47,11 @@ func _center_char(newCenter):
 		offset = offset - 7
 	for x in offset:
 		for i in party.size()-1:
+			center._close_ability_menu()
 			var temp = party[i-1]
 			party[i-1] = party[i]
 			party[i] = temp
 		_party_space()
-		await get_tree().create_timer(0.2).timeout
+		await get_tree().create_timer(0.15).timeout
+	center._open_ability_menu()
 	

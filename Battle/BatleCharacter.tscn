@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://4fgpi22ih745"]
+[gd_scene load_steps=5 format=3 uid="uid://4fgpi22ih745"]
 
 [ext_resource type="Script" path="res://Battle/BatleCharacter.gd" id="1_pss86"]
 [ext_resource type="Texture2D" uid="uid://chclnqlvsnnmg" path="res://ImageAssets/CharIcon.png" id="2_ql2ck"]
+[ext_resource type="PackedScene" uid="uid://c35gi2gka7rll" path="res://Battle/AbilityMenu.tscn" id="3_wwn3o"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f7krl"]
 radius = 56.0
@@ -24,6 +25,9 @@ offset_left = -24.0
 offset_top = -64.0
 offset_right = 24.0
 offset_bottom = -41.0
+
+[node name="AbilityMenu" parent="." instance=ExtResource("3_wwn3o")]
+position = Vector2(-128, -128.25)
 
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

@@ -24,3 +24,9 @@ func _on_area_2d_mouse_exited():
 	
 func _set_name(newName):
 	$CharacterName.text = newName
+	
+func _close_ability_menu():
+	$AbilityMenu.hide()
+	
+func _open_ability_menu():
+	$AbilityMenu.show()
