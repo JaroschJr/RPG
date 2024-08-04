@@ -34,7 +34,7 @@ func _party_space():
 		nextPosition = nextPosition + adjust
 		var pMem = party[x]
 		pMem.scale = Vector2(1,1)
-		tween.tween_property(pMem, "position" ,nextPosition,0.15).set_ease(Tween.EASE_OUT)
+		tween.tween_property(pMem, "position" ,nextPosition,0.125).set_ease(Tween.EASE_OUT)
 		#tween.tween_property(pMem, "position" ,hub,0.2).set_ease(Tween.EASE_OUT)
 	center = party[3]
 	center.scale = Vector2(1.2,1.2)
@@ -52,6 +52,6 @@ func _center_char(newCenter):
 			party[i-1] = party[i]
 			party[i] = temp
 		_party_space()
-		await get_tree().create_timer(0.15).timeout
+		await get_tree().create_timer(0.125).timeout
 	center._open_ability_menu()
 	
