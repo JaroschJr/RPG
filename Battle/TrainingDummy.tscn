@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://btuuhwy34fbpv"]
+
+[ext_resource type="PackedScene" uid="uid://byxixbyv3yd5p" path="res://Battle/Enemy.tscn" id="1_7fy4y"]
+[ext_resource type="Texture2D" uid="uid://b4nf6p2pfhciv" path="res://ImageAssets/Training Dummy.png" id="2_ipp6p"]
+
+[node name="TrainingDummy" instance=ExtResource("1_7fy4y")]
+
+[node name="Sprite2D" parent="." index="0"]
+position = Vector2(7.62939e-06, -7.62939e-06)
+scale = Vector2(0.457143, 0.426667)
+texture = ExtResource("2_ipp6p")
+
+[node name="Name" parent="." index="2"]
+text = "Dummy
+"

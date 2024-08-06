@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://d3agtqtqotecc"]
+[gd_scene load_steps=4 format=3 uid="uid://d3agtqtqotecc"]
 
 [ext_resource type="Script" path="res://Battle/Battlefield.gd" id="1_iovn7"]
+[ext_resource type="PackedScene" uid="uid://btuuhwy34fbpv" path="res://Battle/TrainingDummy.tscn" id="2_44noh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fn0um"]
 size = Vector2(1152, 146)
@@ -21,3 +22,6 @@ offset_right = 576.0
 offset_bottom = 72.0
 color = Color(1, 1, 1, 0)
 metadata/_edit_use_anchors_ = true
+
+[node name="TrainingDummy" parent="." instance=ExtResource("2_44noh")]
+position = Vector2(576, 192)

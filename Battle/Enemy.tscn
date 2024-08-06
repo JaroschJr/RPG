@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://byxixbyv3yd5p"]
+
+[ext_resource type="Script" path="res://Battle/Enemy.gd" id="1_4gisy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m16dp"]
+size = Vector2(192, 256)
+
+[node name="Enemy" type="Node2D"]
+script = ExtResource("1_4gisy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.957143, 0.806667)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_m16dp")
+
+[node name="Name" type="Label" parent="."]
+offset_left = -96.0
+offset_top = -160.0
+offset_right = 96.0
+offset_bottom = -128.0
