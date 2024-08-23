@@ -1,9 +1,11 @@
 extends Node2D
 var party
 var center
+var readied_ability
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	battle_globals._set_battlefield_ref(self)
 	var tween = get_tree().create_tween().set_parallel(true)
 	var pMember = load("res://Battle/BatleCharacter.tscn")
 	party = []
@@ -55,3 +57,5 @@ func _center_char(newCenter):
 		await get_tree().create_timer(0.125).timeout
 	center._open_ability_menu()
 	
+func _loaded_ability_name(new_ab):
+	$AbilityReadied.text = new_ab

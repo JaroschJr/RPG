@@ -30,3 +30,7 @@ func _close_ability_menu():
 	
 func _open_ability_menu():
 	$AbilityMenu.show()
+	
+func _ability_selected(ability_id):
+	battle_globals._ready_ability(ability_id, self)
+	print("ability selected")

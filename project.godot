@@ -14,6 +14,17 @@ config/name="RPG"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+battle_globals="*res://battle_globals.gd"
+ability_scripts="*res://ability_scripts.gd"
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=704
+window/stretch/mode="viewport"
+
 [input]
 
 click={

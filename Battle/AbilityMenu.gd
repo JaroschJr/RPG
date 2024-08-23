@@ -2,6 +2,8 @@ extends Node2D
 
 var abilities
 
+signal AbilityUsedSignal(ab_id)
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	self.hide()
@@ -14,6 +16,7 @@ func _ready():
 	for x in 4:		#4 generic ability placeholders. In the final version, this will be reading out of a list somewhere
 		var member = ability.instantiate()
 		add_child(member)
+		m
 		abilities.append(member)
 		tween.tween_property(member, "position" ,nextPosition,0.125).set_ease(Tween.EASE_OUT)
 		nextPosition.y = nextPosition.y + offset
@@ -23,3 +26,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+	
+func _ability_used(ability_id):
+	
+	AbilityUsedSignal.emit(ability_id)
