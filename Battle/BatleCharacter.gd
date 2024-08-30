@@ -1,11 +1,13 @@
 extends Node2D
 var BattleRef
 var mousedOver
+var strength
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	mousedOver = false
 	BattleRef = get_node("/root/Battlefield")
+	strength = 10
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

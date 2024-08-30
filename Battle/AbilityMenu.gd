@@ -16,7 +16,6 @@ func _ready():
 	for x in 4:		#4 generic ability placeholders. In the final version, this will be reading out of a list somewhere
 		var member = ability.instantiate()
 		add_child(member)
-		m
 		abilities.append(member)
 		tween.tween_property(member, "position" ,nextPosition,0.125).set_ease(Tween.EASE_OUT)
 		nextPosition.y = nextPosition.y + offset

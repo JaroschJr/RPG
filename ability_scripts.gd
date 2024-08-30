@@ -1,8 +1,9 @@
 extends Node
-
+var rng
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	rng = RandomNumberGenerator.new()
 	pass # Replace with function body.
 
 
@@ -15,3 +16,14 @@ func _use_readied_ability(target):
 	
 func _use_ability(user, ability_id, target, battlefield):
 	print("Attack!")
+	
+func _slash(user, ability_id, target, battlefield):
+	var damage = rng.randi_range(0, user.strength)
+	print(str("Hit for ", damage))
+	pass
+	
+func _heavy_slash(user, ability_id, target, battlefield):
+	var damage = rng.randi_range(0, user.strength * 2)
+	print(str("Hit for ", damage))
+	pass
+	
