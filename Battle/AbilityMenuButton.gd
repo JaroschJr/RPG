@@ -1,5 +1,4 @@
 extends Node2D
-var abilityName
 var ability_id
 
 
@@ -10,6 +9,9 @@ func _ready():
 func _on_click():
 	get_parent()._ability_used(ability_id)
 
+func _set_up(ability):
+	ability_id = ability
+	$Label.text = global_values._get_ability_name(ability_id)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

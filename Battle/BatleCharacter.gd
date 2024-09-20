@@ -9,6 +9,11 @@ func _ready():
 	BattleRef = get_node("/root/Battlefield")
 	strength = 10
 
+# "_init()" is how constructors are declared in gdscript
+func _set_up(new_name, new_strength,ability_list):
+	strength = new_strength
+	_set_name(new_name)
+	$AbilityMenu._set_up(ability_list)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

@@ -15,10 +15,11 @@ func _use_readied_ability(target):
 	_use_ability(battle_globals.ability_user, battle_globals.ability_selected, target, battle_globals.battlefield_ref)
 	
 func _use_ability(user, ability_id, target, battlefield):
-	print("Attack!")
+	_slash(user, ability_id, target, battlefield)
 	
 func _slash(user, ability_id, target, battlefield):
 	var damage = rng.randi_range(0, user.strength)
+	print(ability_id)
 	print(str("Hit for ", damage))
 	pass
 	

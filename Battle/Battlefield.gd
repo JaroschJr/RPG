@@ -3,17 +3,23 @@ var party
 var center
 var readied_ability
 
+const BatleCharacter = preload("res://Battle/BatleCharacter.tscn")
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	battle_globals._set_battlefield_ref(self)
 	var tween = get_tree().create_tween().set_parallel(true)
+	#GDscript lacks true constructors the way Java does.
+	#this shamefull assemblage is the best I can aproximate.
 	var pMember = load("res://Battle/BatleCharacter.tscn")
 	party = []
 	for i in range(7):
-		var member = pMember.instantiate()
+		var member = BatleCharacter.instantiate()
+		var ability_list = ["slash", "heavy_slash"]
 		add_child(member)
+		member._set_up(str(i), 10, ability_list)
 		party.append(member)
-		member._set_name(str(i))
+		#member._set_name(str(i))
 	#hubCoordinates = $PartyArea.get_global_transform()
 	_party_space()
 	center._open_ability_menu()
