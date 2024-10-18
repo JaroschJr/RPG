@@ -6,11 +6,13 @@
 script = ExtResource("1_hnhqy")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_right = 184.0
+offset_left = -88.0
+offset_right = 96.0
 offset_bottom = 24.0
 
 [node name="Label" type="Label" parent="."]
-offset_right = 192.0
+offset_left = -88.0
+offset_right = 104.0
 offset_bottom = 24.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 13
@@ -18,7 +20,8 @@ text = "Ability Example
 "
 
 [node name="Button" type="Button" parent="."]
-offset_right = 184.0
+offset_left = -88.0
+offset_right = 96.0
 offset_bottom = 24.0
 flat = true
 

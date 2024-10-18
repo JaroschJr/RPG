@@ -13,7 +13,8 @@ func _ready():
 	#this shamefull assemblage is the best I can aproximate.
 	var pMember = load("res://Battle/BatleCharacter.tscn")
 	party = []
-	for i in range(7):
+	for i in range(7):#this works for any party size
+		#this chunk is a placeholder. Eventually these will be being read in from elsewhere.
 		var member = BatleCharacter.instantiate()
 		var ability_list = ["slash", "heavy_slash"]
 		add_child(member)
@@ -42,19 +43,22 @@ func _party_space():
 		nextPosition = nextPosition + adjust
 		var pMem = party[x]
 		pMem.scale = Vector2(1,1)
-		tween.tween_property(pMem, "position" ,nextPosition,0.125).set_ease(Tween.EASE_OUT)
+		tween.tween_property(pMem, "position" ,nextPosition,.1).set_ease(Tween.EASE_OUT)
 		#tween.tween_property(pMem, "position" ,hub,0.2).set_ease(Tween.EASE_OUT)
-	center = party[3]
-	center.scale = Vector2(1.2,1.2)
+	center = party[0]
+	#center = party[0]
+	center.scale = Vector2(1.3,1.3)
 	
 func _center_char(newCenter):
-	var offset = party.find(newCenter) + 4
-	if offset == 7:
+	var pSize = party.size()
+	#var offset = party.find(newCenter) + 4
+	var offset = party.find(newCenter)
+	if offset == pSize:
 		return
-	elif offset > 7:
-		offset = offset - 7
+	elif offset > pSize:
+		offset = offset - pSize
 	for x in offset:
-		for i in party.size()-1:
+		for i in pSize-1:
 			center._close_ability_menu()
 			var temp = party[i-1]
 			party[i-1] = party[i]
