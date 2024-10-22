@@ -13,6 +13,8 @@ func _process(delta):
 
 func _use_readied_ability(target):
 	_use_ability(battle_globals.ability_user, battle_globals.ability_selected, target, battle_globals.battlefield_ref)
+	battle_globals.is_ability_selected = false
+	battle_globals.ability_selected = null
 	
 func _use_ability(user, ability_id, target, battlefield):
 	_slash(user, ability_id, target, battlefield)
