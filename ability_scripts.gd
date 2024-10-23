@@ -17,7 +17,11 @@ func _use_readied_ability(target):
 	battle_globals.ability_selected = null
 	
 func _use_ability(user, ability_id, target, battlefield):
-	_slash(user, ability_id, target, battlefield)
+	match ability_id:
+		"slash":
+			_slash(user, ability_id, target, battlefield)
+		"heavy_slash":
+			_heavy_slash(user, ability_id, target, battlefield)
 	
 func _slash(user, ability_id, target, battlefield):
 	var damage = rng.randi_range(0, user.strength)
