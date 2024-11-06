@@ -1,4 +1,5 @@
 extends Node2D
+class_name Enemy
 var health
 var maxHealth
 var mousedOver
