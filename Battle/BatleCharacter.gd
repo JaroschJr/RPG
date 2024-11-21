@@ -33,12 +33,12 @@ func _process(delta):
 		
 func _on_area_2d_mouse_entered():
 	mousedOver = true
-	print("Mouse enters")
+	#print("Mouse enters")
 
 
 func _on_area_2d_mouse_exited():
 	mousedOver = false
-	print("Mouse exits")
+	#print("Mouse exits")
 	
 func _set_name(newName):
 	$CharacterName.text = newName
@@ -51,4 +51,4 @@ func _open_ability_menu():
 	
 func _ability_selected(ability_id):
 	battle_globals._ready_ability(ability_id, self)
-	print("ability selected")
+	#print("ability selected")
