@@ -2,18 +2,29 @@ extends Node2D
 var BattleRef
 var mousedOver
 var strength
+var max_stamina
+var stamina
+var max_life
+var life
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	mousedOver = false
 	BattleRef = get_node("/root/Battlefield")
 	strength = 10
+	
 
 # "_init()" is how constructors are declared in gdscript
 func _set_up(new_name, new_strength,ability_list):
 	strength = new_strength
 	_set_name(new_name)
 	$AbilityMenu._set_up(ability_list)
+	max_stamina = 100
+	stamina = 100
+	max_life = 100
+	life = 100
+	$BarScalingParent1/LifeBar.value = 100
+	$BarScalingParent2/StaminaBar.value = 100
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

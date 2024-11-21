@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://byxixbyv3yd5p" path="res://Battle/Enemy.tscn" id="1_7fy4y"]
 [ext_resource type="Script" path="res://Battle/TrainingDummy.gd" id="2_gdvua"]
-[ext_resource type="Texture2D" uid="uid://b4nf6p2pfhciv" path="res://ImageAssets/Training Dummy.png" id="2_ipp6p"]
+[ext_resource type="Texture2D" uid="uid://bwnt1vtopfwud" path="res://ImageAssets/Training Dummy.png" id="2_ipp6p"]
 
 [node name="Enemy" instance=ExtResource("1_7fy4y")]
 script = ExtResource("2_gdvua")
