@@ -21,3 +21,12 @@ position = Vector2(640, 160)
 [node name="AbilityReadied" type="Label" parent="."]
 offset_right = 104.0
 offset_bottom = 32.0
+
+[node name="EndTurnButton" type="Button" parent="."]
+offset_left = 1168.0
+offset_top = 456.0
+offset_right = 1286.0
+offset_bottom = 512.0
+text = "End Turn"
+
+[connection signal="button_down" from="EndTurnButton" to="." method="_on_end_turn_button_button_down"]

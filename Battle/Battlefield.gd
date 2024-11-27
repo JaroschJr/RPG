@@ -69,3 +69,14 @@ func _center_char(newCenter):
 	
 func _loaded_ability_name(new_ab):
 	$AbilityReadied.text = new_ab
+
+func _turn():
+	#enemy moves
+	for i in party.size():
+		party[i]._turn_start()
+		
+
+
+func _on_end_turn_button_button_down():
+	_turn()
+	pass # Replace with function body.

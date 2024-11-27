@@ -18,6 +18,7 @@ func _use_readied_ability(target):
 	battle_globals.ability_selected = null
 	
 func _use_ability(user, ability_id, target, battlefield):
+	user._move_poke()
 	match ability_id:
 		"slash":
 			_slash(user, ability_id, target, battlefield)

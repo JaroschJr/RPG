@@ -6,12 +6,15 @@ var max_stamina
 var stamina
 var max_life
 var life
+var has_moved
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	mousedOver = false
 	BattleRef = get_node("/root/Battlefield")
-	strength = 10
+	has_moved = false
+	$MovedIndicatorTrue.hide()
+	
 	
 
 # "_init()" is how constructors are declared in gdscript
@@ -52,3 +55,15 @@ func _open_ability_menu():
 func _ability_selected(ability_id):
 	battle_globals._ready_ability(ability_id, self)
 	#print("ability selected")
+	
+func _move_poke():
+	has_moved = true
+	$MovedIndicatorTrue.show()
+	
+func _turn_start():
+	#anything that happens at the end of a turn happens here. Countdowns on statuse efects, DOT effects, and so on.
+	#print("starting new turn")
+	has_moved = false
+	$MovedIndicatorTrue.hide()
+	
+	

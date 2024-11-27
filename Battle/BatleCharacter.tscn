@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://4fgpi22ih745"]
+[gd_scene load_steps=12 format=3 uid="uid://4fgpi22ih745"]
 
 [ext_resource type="Script" path="res://Battle/BatleCharacter.gd" id="1_pss86"]
 [ext_resource type="Texture2D" uid="uid://bxc8ihfhvod30" path="res://ImageAssets/PlaceholderPortrait.png" id="2_0b0fp"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://b8ffwa60fvvo4" path="res://ImageAssets/CharLifeFull.png" id="6_cl3yu"]
 [ext_resource type="Texture2D" uid="uid://fchg8xaaqarw" path="res://ImageAssets/CharStamEmpty.png" id="7_buosa"]
 [ext_resource type="Texture2D" uid="uid://bqlnc3kf7pms3" path="res://ImageAssets/CharStamFull.png" id="8_13h8e"]
+[ext_resource type="Texture2D" uid="uid://bngrhfke28q0v" path="res://ImageAssets/MovedIconFalse.png" id="9_nfk5n"]
 [ext_resource type="Texture2D" uid="uid://b4ipsmgxfgfh7" path="res://ImageAssets/MovedIconTrue.png" id="9_unpyu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f7krl"]
@@ -63,7 +64,11 @@ fill_mode = 3
 texture_under = ExtResource("7_buosa")
 texture_progress = ExtResource("8_13h8e")
 
-[node name="MovedIndicator" type="Sprite2D" parent="."]
+[node name="MovedIndicatorFalse" type="Sprite2D" parent="."]
+scale = Vector2(0.213333, 0.213333)
+texture = ExtResource("9_nfk5n")
+
+[node name="MovedIndicatorTrue" type="Sprite2D" parent="."]
 scale = Vector2(0.213333, 0.213333)
 texture = ExtResource("9_unpyu")
 
