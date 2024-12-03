@@ -29,4 +29,17 @@ offset_right = 1286.0
 offset_bottom = 512.0
 text = "End Turn"
 
+[node name="AP" type="Label" parent="."]
+offset_left = 1088.0
+offset_top = 384.0
+offset_right = 1216.0
+offset_bottom = 448.0
+text = "Action Points"
+
+[node name="ActionPointPool" type="Label" parent="."]
+offset_left = 1217.0
+offset_top = 384.0
+offset_right = 1281.0
+offset_bottom = 448.0
+
 [connection signal="button_down" from="EndTurnButton" to="." method="_on_end_turn_button_button_down"]

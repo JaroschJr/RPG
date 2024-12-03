@@ -2,11 +2,13 @@ extends Node2D
 var party
 var center
 var readied_ability
+var action_points
 
 const BatleCharacter = preload("res://Battle/BatleCharacter.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	_set_action_points(5)
 	battle_globals._set_battlefield_ref(self)
 	var tween = get_tree().create_tween().set_parallel(true)
 	#GDscript lacks true constructors the way Java does.
@@ -74,9 +76,17 @@ func _turn():
 	#enemy moves
 	for i in party.size():
 		party[i]._turn_start()
-		
+	_set_action_points(5)
 
 
 func _on_end_turn_button_button_down():
 	_turn()
 	pass # Replace with function body.
+
+func _set_action_points(new_ap):
+	action_points = new_ap
+	$ActionPointPool.text = str(action_points)
+
+func _get_action_points():
+	return action_points
+	
