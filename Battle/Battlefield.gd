@@ -18,7 +18,7 @@ func _ready():
 	for i in range(7):#this works for any party size
 		#this chunk is a placeholder. Eventually these will be being read in from elsewhere.
 		var member = BatleCharacter.instantiate()
-		var ability_list = ["slash", "heavy_slash"]
+		var ability_list = [global_values._get_ability("slash"), global_values._get_ability("heavy_slash")]
 		add_child(member)
 		member._set_up(str(i), 10, ability_list)
 		party.append(member)

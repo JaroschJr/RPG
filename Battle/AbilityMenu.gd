@@ -17,7 +17,7 @@ func _set_up(ability_list):
 	var offset = 32
 	var nextPosition = hub
 	var tween = get_tree().create_tween().set_parallel(true)
-	for x in ability_list.size():		#4 generic ability placeholders. In the final version, this will be reading out of a list somewhere
+	for x in ability_list.size():		#2 generic ability placeholders. In the final version, this will be reading out of a list somewhere
 		var member = ability.instantiate()
 		add_child(member)
 		abilities.append(member)
