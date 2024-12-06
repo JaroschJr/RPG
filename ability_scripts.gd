@@ -17,13 +17,17 @@ func _use_readied_ability(target):
 	battle_globals.is_ability_selected = false
 	battle_globals.ability_selected = null
 	
-func _use_ability(user, ability_id, target, battlefield):
+func _use_ability(user, ability, target, battlefield):
+	#if battlefield.action_points < ability.ap_cost:
+	#	return 
+	battlefield._set_action_points( battlefield.action_points - ability.ap_cost)
+	user._spend_stamina(ability.sp_cost)
 	user._move_poke()
-	match ability_id:
+	match ability.ability_id:
 		"slash":
-			_slash(user, ability_id, target, battlefield)
+			_slash(user, ability, target, battlefield)
 		"heavy_slash":
-			_heavy_slash(user, ability_id, target, battlefield)
+			_heavy_slash(user, ability, target, battlefield)
 	
 func _slash(user, ability_id, target, battlefield):
 	var damage = rng.randi_range(0, user.strength)

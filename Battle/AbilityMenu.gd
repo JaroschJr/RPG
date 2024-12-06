@@ -30,6 +30,6 @@ func _set_up(ability_list):
 func _process(delta):
 	pass
 	
-func _ability_used(ability_id):
+func _ability_used(ability):
 	
-	AbilityUsedSignal.emit(ability_id)
+	AbilityUsedSignal.emit(ability)

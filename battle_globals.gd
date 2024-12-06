@@ -16,8 +16,10 @@ func _set_battlefield_ref(brf):
 func _process(delta):
 	pass
 	
-func _ready_ability(ability_id, user):
-	ability_selected = ability_id
+func _ready_ability(ability, user):
+	
+	ability_selected = ability
 	ability_user = user
 	is_ability_selected = true
+	#is_ability_selected.ap
 	pass

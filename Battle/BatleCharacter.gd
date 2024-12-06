@@ -26,8 +26,17 @@ func _set_up(new_name, new_strength,ability_list):
 	stamina = 100
 	max_life = 100
 	life = 100
-	$BarScalingParent1/LifeBar.value = 100
-	$BarScalingParent2/StaminaBar.value = 100
+	#Because of how the textures work, the empty space above the bar is "part of" the mesh.
+	#So a 'full' bar is 90% instead of 100
+	$BarScalingParent1/LifeBar.value = 90
+	$BarScalingParent2/StaminaBar.value = 90
+	
+func _ui_update():
+	$BarScalingParent1/LifeBar.value = (life * 90) / max_life
+	
+	var newStam = (stamina * 100) / max_stamina
+	print("New stamina percentage " + str(newStam))
+	$BarScalingParent2/StaminaBar.value = (stamina * 90) / max_stamina
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -52,14 +61,19 @@ func _close_ability_menu():
 func _open_ability_menu():
 	$AbilityMenu.show()
 	
-func _ability_selected(ability_id):
-	battle_globals._ready_ability(ability_id, self)
+func _ability_selected(ability):
+	battle_globals._ready_ability(ability, self)
 	#print("ability selected")
 	
 func _move_poke():
 	has_moved = true
 	$MovedIndicatorTrue.show()
 	
+func _spend_stamina(sp_fee):
+	stamina = stamina - sp_fee
+	_ui_update()
+	
+
 func _turn_start():
 	#anything that happens at the end of a turn happens here. Countdowns on statuse efects, DOT effects, and so on.
 	#print("starting new turn")

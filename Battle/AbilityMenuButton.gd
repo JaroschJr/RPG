@@ -7,7 +7,7 @@ func _ready():
 	pass # Replace with function body.
 	
 func _on_click():
-	get_parent()._ability_used(ability.ability_id)
+	get_parent()._ability_used(ability)
 
 func _set_up(new_ability):
 	ability = new_ability
