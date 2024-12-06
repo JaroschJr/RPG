@@ -20,6 +20,13 @@ func _use_readied_ability(target):
 func _use_ability(user, ability, target, battlefield):
 	#if battlefield.action_points < ability.ap_cost:
 	#	return 
+	if  battlefield.action_points < ability.ap_cost:
+		print("Not enough AP")
+		return
+	if user.stamina < ability.sp_cost:
+		print("Too tired!")
+		return
+	
 	battlefield._set_action_points( battlefield.action_points - ability.ap_cost)
 	user._spend_stamina(ability.sp_cost)
 	user._move_poke()
