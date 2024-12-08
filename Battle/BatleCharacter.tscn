@@ -1,15 +1,15 @@
 [gd_scene load_steps=12 format=3 uid="uid://4fgpi22ih745"]
 
 [ext_resource type="Script" path="res://Battle/BatleCharacter.gd" id="1_pss86"]
-[ext_resource type="Texture2D" uid="uid://bxc8ihfhvod30" path="res://ImageAssets/PlaceholderPortrait.png" id="2_0b0fp"]
+[ext_resource type="Texture2D" uid="uid://dm84534s4lnba" path="res://ImageAssets/PlaceholderPortrait.png" id="2_0b0fp"]
 [ext_resource type="PackedScene" uid="uid://c35gi2gka7rll" path="res://Battle/AbilityMenu.tscn" id="3_wwn3o"]
-[ext_resource type="Texture2D" uid="uid://s8x826iqw4a0" path="res://ImageAssets/PortraitBorder.png" id="4_kn61g"]
-[ext_resource type="Texture2D" uid="uid://bun8hqtmwemfm" path="res://ImageAssets/CharLifeEmpty.png" id="5_7btmc"]
-[ext_resource type="Texture2D" uid="uid://b8ffwa60fvvo4" path="res://ImageAssets/CharLifeFull.png" id="6_cl3yu"]
-[ext_resource type="Texture2D" uid="uid://fchg8xaaqarw" path="res://ImageAssets/CharStamEmpty.png" id="7_buosa"]
-[ext_resource type="Texture2D" uid="uid://bqlnc3kf7pms3" path="res://ImageAssets/CharStamFull.png" id="8_13h8e"]
-[ext_resource type="Texture2D" uid="uid://bngrhfke28q0v" path="res://ImageAssets/MovedIconFalse.png" id="9_nfk5n"]
-[ext_resource type="Texture2D" uid="uid://b4ipsmgxfgfh7" path="res://ImageAssets/MovedIconTrue.png" id="9_unpyu"]
+[ext_resource type="Texture2D" uid="uid://c25lrkvnmbyb1" path="res://ImageAssets/PortraitBorder.png" id="4_kn61g"]
+[ext_resource type="Texture2D" uid="uid://dtf7yg1gt4gw1" path="res://ImageAssets/CharLifeEmpty.png" id="5_7btmc"]
+[ext_resource type="Texture2D" uid="uid://duisnm05uod2p" path="res://ImageAssets/CharLifeFull.png" id="6_cl3yu"]
+[ext_resource type="Texture2D" uid="uid://byru0rhtddxt7" path="res://ImageAssets/CharStamEmpty.png" id="7_buosa"]
+[ext_resource type="Texture2D" uid="uid://djgwum1xbxmqh" path="res://ImageAssets/CharStamFull.png" id="8_13h8e"]
+[ext_resource type="Texture2D" uid="uid://dikxod13jnq81" path="res://ImageAssets/MovedIconFalse.png" id="9_nfk5n"]
+[ext_resource type="Texture2D" uid="uid://c7upucikdiolx" path="res://ImageAssets/MovedIconTrue.png" id="9_unpyu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f7krl"]
 radius = 56.0

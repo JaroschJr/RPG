@@ -7,6 +7,7 @@ var stamina
 var max_life
 var life
 var has_moved
+var rest_factor
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -26,6 +27,7 @@ func _set_up(new_name, new_strength,ability_list):
 	stamina = 100
 	max_life = 100
 	life = 100
+	rest_factor = 10
 	#Because of how the textures work, the empty space above the bar is "part of" the mesh.
 	#So a 'full' bar is 90% instead of 100
 	$BarScalingParent1/LifeBar.value = 90
@@ -77,7 +79,12 @@ func _spend_stamina(sp_fee):
 func _turn_start():
 	#anything that happens at the end of a turn happens here. Countdowns on statuse efects, DOT effects, and so on.
 	#print("starting new turn")
+	if has_moved == false:
+		stamina = stamina + rest_factor
+		if stamina > max_stamina:
+			stamina = max_stamina
 	has_moved = false
 	$MovedIndicatorTrue.hide()
+	_ui_update()
 	
 	

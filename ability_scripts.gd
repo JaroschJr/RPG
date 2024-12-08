@@ -38,7 +38,6 @@ func _use_ability(user, ability, target, battlefield):
 	
 func _slash(user, ability_id, target, battlefield):
 	var damage = rng.randi_range(0, user.strength)
-	print(ability_id)
 	target._damage(damage, "placeholder")
 	print(str("Hit for ", damage))
 	pass
