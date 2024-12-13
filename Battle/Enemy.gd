@@ -3,6 +3,7 @@ class_name Enemy
 var health
 var maxHealth
 var mousedOver
+var move_list
 
 
 # Called when the node enters the scene tree for the first time.

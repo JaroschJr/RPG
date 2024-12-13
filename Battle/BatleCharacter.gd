@@ -35,9 +35,6 @@ func _set_up(new_name, new_strength,ability_list):
 	
 func _ui_update():
 	$BarScalingParent1/LifeBar.value = (life * 90) / max_life
-	
-	var newStam = (stamina * 100) / max_stamina
-	print("New stamina percentage " + str(newStam))
 	$BarScalingParent2/StaminaBar.value = (stamina * 90) / max_stamina
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -73,6 +70,18 @@ func _move_poke():
 	
 func _spend_stamina(sp_fee):
 	stamina = stamina - sp_fee
+	_ui_update()
+	
+
+func _damage(damagepoints, type):
+	#apply resistiances first.
+	if damagepoints > stamina:
+		damagepoints = damagepoints - stamina
+		stamina = 0
+		#possibly some extra damage modification here
+		life = life - damagepoints
+	else:
+		stamina = stamina - damagepoints
 	_ui_update()
 	
 
