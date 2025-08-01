@@ -75,6 +75,7 @@ func _spend_stamina(sp_fee):
 
 func _damage(damagepoints, type):
 	#apply resistiances first.
+	print("damage ", damagepoints)
 	if damagepoints > stamina:
 		damagepoints = damagepoints - stamina
 		stamina = 0

@@ -9,3 +9,5 @@ func _ready():
 	super._ready()
 	maxHealth = 80
 	health = maxHealth
+	move_list = [global_values._get_ability("slash")]
+	strength = 50

@@ -19,25 +19,33 @@ func _use_readied_ability(target):
 	
 func _use_ability(user, ability, target, battlefield):
 	#if battlefield.action_points < ability.ap_cost:
-	#	return 
-	if  battlefield.action_points < ability.ap_cost:
+	#	return
+	if user is Enemy:
+		_match_and_use_ability(user, ability, target, battlefield)
+		return
+	elif  battlefield.action_points < ability.ap_cost:
 		print("Not enough AP")
 		return
-	if user.stamina < ability.sp_cost:
+	elif user.stamina < ability.sp_cost:
 		print("Too tired!")
 		return
 	
 	battlefield._set_action_points( battlefield.action_points - ability.ap_cost)
 	user._spend_stamina(ability.sp_cost)
 	user._move_poke()
+	_match_and_use_ability(user, ability, target, battlefield)
+
+func _match_and_use_ability(user, ability, target, battlefield):
 	match ability.ability_id:
 		"slash":
 			_slash(user, ability, target, battlefield)
 		"heavy_slash":
 			_heavy_slash(user, ability, target, battlefield)
-	
+
 func _slash(user, ability_id, target, battlefield):
 	var damage = rng.randi_range(0, user.strength)
+	print(user)
+	print(target)
 	target._damage(damage, "placeholder")
 	print(str("Hit for ", damage))
 	pass

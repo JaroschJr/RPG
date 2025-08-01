@@ -74,6 +74,7 @@ func _loaded_ability_name(new_ab):
 
 func _turn():
 	#enemy moves
+	$TrainingDummy._move()
 	for i in party.size():
 		party[i]._turn_start()
 	_set_action_points(5)
@@ -90,3 +91,9 @@ func _set_action_points(new_ap):
 func _get_action_points():
 	return action_points
 	
+
+
+func _on_training_dummy_attacking(attacker, attack):
+	print("Dummy turn!")
+	ability_scripts._use_ability(attacker, attack, party.pick_random(), self)
+	pass # Replace with function body.
