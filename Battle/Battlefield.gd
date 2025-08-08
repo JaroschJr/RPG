@@ -3,6 +3,7 @@ var party
 var center
 var readied_ability
 var action_points
+var rng
 
 const BatleCharacter = preload("res://Battle/BatleCharacter.tscn")
 
@@ -14,6 +15,7 @@ func _ready():
 	#GDscript lacks true constructors the way Java does.
 	#this shamefull assemblage is the best I can aproximate.
 	var pMember = load("res://Battle/BatleCharacter.tscn")
+	rng = RandomNumberGenerator.new()
 	party = []
 	for i in range(7):#this works for any party size
 		#this chunk is a placeholder. Eventually these will be being read in from elsewhere.
@@ -73,6 +75,9 @@ func _loaded_ability_name(new_ab):
 	$AbilityReadied.text = new_ab
 
 func _turn():
+	if action_points >0:
+		print("unused action points")
+		return
 	#enemy moves
 	$TrainingDummy._move()
 	for i in party.size():
@@ -91,9 +96,14 @@ func _set_action_points(new_ap):
 func _get_action_points():
 	return action_points
 	
-
+func _random_moved_character():
+	while true:
+		var check = party.pick_random()
+		if check.has_moved:
+			return check
+	return
 
 func _on_training_dummy_attacking(attacker, attack):
 	print("Dummy turn!")
-	ability_scripts._use_ability(attacker, attack, party.pick_random(), self)
+	ability_scripts._use_ability(attacker, attack, _random_moved_character(), self)
 	pass # Replace with function body.
