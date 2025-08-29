@@ -7,6 +7,7 @@ var move_list
 var strength
 
 signal attacking(attacker, attack)
+signal death(my_self)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$HealthBar.value = 100
@@ -33,8 +34,13 @@ func _damage(damagepoints, type):
 	#that entities will have different vulnerabilities too.
 	health = health - damagepoints
 	$HealthBar.value = 100 * health / maxHealth
+	if health <= 0:
+		_die()
 	
 func _move(): #what it does in it's turn.
 	print("gets here 1")
 	attacking.emit(self, move_list[0])
 	return
+	
+func _die():
+	death.emit(self)

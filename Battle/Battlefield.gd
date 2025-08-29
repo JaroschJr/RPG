@@ -1,6 +1,7 @@
 extends Node2D
 var party
 var center
+var enemies
 var readied_ability
 var action_points
 var rng
@@ -28,6 +29,27 @@ func _ready():
 	#hubCoordinates = $PartyArea.get_global_transform()
 	_party_space()
 	center._open_ability_menu()
+	
+	#SpawnEnemies
+	#This is an example for testing.
+	enemies = []
+	var enemyHub = $EnemySpawnRef.get_global_transform().origin
+	var dummy = load("res://Battle/TrainingDummy.tscn")
+	var enemy = dummy.instantiate()
+	add_child(enemy)
+	enemies.append(enemy)
+	enemy.position = enemyHub
+	enemy.attacking.connect(_on_enemy_move)
+	enemy.death.connect(_on_enemy_death)
+	
+	enemyHub.x = enemyHub.x + 128
+	enemy = dummy.instantiate()
+	add_child(enemy)
+	enemies.append(enemy)
+	enemy.position = enemyHub
+	enemy.attacking.connect(_on_enemy_move)
+	enemy.death.connect(_on_enemy_death)
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -79,7 +101,8 @@ func _turn():
 		print("unused action points")
 		return
 	#enemy moves
-	$TrainingDummy._move()
+	for i in enemies.size():
+		enemies[i]._move()
 	for i in party.size():
 		party[i]._turn_start()
 	_set_action_points(5)
@@ -103,7 +126,11 @@ func _random_moved_character():
 			return check
 	return
 
-func _on_training_dummy_attacking(attacker, attack):
+func _on_enemy_move(attacker, attack):
 	print("Dummy turn!")
 	ability_scripts._use_ability(attacker, attack, _random_moved_character(), self)
 	pass # Replace with function body.
+	
+func _on_enemy_death(dead_enemy):
+	enemies.remove_at(enemies.find(dead_enemy))
+	dead_enemy.queue_free()
