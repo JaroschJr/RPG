@@ -8,6 +8,7 @@ var max_life
 var life
 var has_moved
 var rest_factor
+var actorName
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -53,6 +54,7 @@ func _on_area_2d_mouse_exited():
 	
 func _set_name(newName):
 	$CharacterName.text = newName
+	actorName = newName
 	
 func _close_ability_menu():
 	$AbilityMenu.hide()

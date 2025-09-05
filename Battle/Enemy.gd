@@ -5,6 +5,7 @@ var maxHealth
 var mousedOver
 var move_list
 var strength
+var actorName
 
 signal attacking(attacker, attack)
 signal death(my_self)

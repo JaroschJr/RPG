@@ -24,10 +24,10 @@ func _use_ability(user, ability, target, battlefield):
 		_match_and_use_ability(user, ability, target, battlefield)
 		return
 	elif  battlefield.action_points < ability.ap_cost:
-		print("Not enough AP")
+		battle_globals.battlefield_ref._log_message("Not enough AP")
 		return
 	elif user.stamina < ability.sp_cost:
-		print("Too tired!")
+		battle_globals.battlefield_ref._log_message("Too tired!")
 		return
 	
 	battlefield._set_action_points( battlefield.action_points - ability.ap_cost)
@@ -47,12 +47,12 @@ func _slash(user, ability_id, target, battlefield):
 	print(user)
 	print(target)
 	target._damage(damage, "placeholder")
-	print(str("Hit for ", damage))
+	battle_globals.battlefield_ref._log_message(str(user.actorName, " hit ", target.actorName, " for ", damage))
 	pass
 	
 func _heavy_slash(user, ability_id, target, battlefield):
 	var damage = rng.randi_range(0, user.strength * 2)
 	target._damage(damage, "placeholder")
-	print(str("Hit for ", damage))
+	battle_globals.battlefield_ref._log_message(str(user.actorName, " hit ", target.actorName, " for ", damage))
 	pass
 	

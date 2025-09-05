@@ -5,6 +5,7 @@ var enemies
 var readied_ability
 var action_points
 var rng
+var turn_count
 
 const BatleCharacter = preload("res://Battle/BatleCharacter.tscn")
 
@@ -39,16 +40,22 @@ func _ready():
 	add_child(enemy)
 	enemies.append(enemy)
 	enemy.position = enemyHub
+	enemy.position.x = enemy.position.x - 128
 	enemy.attacking.connect(_on_enemy_move)
 	enemy.death.connect(_on_enemy_death)
+	enemy._set_up("Target A")
 	
-	enemyHub.x = enemyHub.x + 128
 	enemy = dummy.instantiate()
 	add_child(enemy)
 	enemies.append(enemy)
 	enemy.position = enemyHub
+	enemy.position.x = enemy.position.x + 128
 	enemy.attacking.connect(_on_enemy_move)
 	enemy.death.connect(_on_enemy_death)
+	enemy._set_up("Target B")
+	
+	turn_count = 1
+	_log_message(str("--- Turn ", turn_count , " ---"))
 	
 
 
@@ -98,7 +105,7 @@ func _loaded_ability_name(new_ab):
 
 func _turn():
 	if action_points >0:
-		print("unused action points")
+		_log_message("unused action points")
 		return
 	#enemy moves
 	for i in enemies.size():
@@ -106,6 +113,8 @@ func _turn():
 	for i in party.size():
 		party[i]._turn_start()
 	_set_action_points(5)
+	turn_count = turn_count + 1
+	_log_message(str("\n--- Turn ", turn_count , " ---"))
 
 
 func _on_end_turn_button_button_down():
@@ -125,6 +134,13 @@ func _random_moved_character():
 		if check.has_moved:
 			return check
 	return
+	
+func _log_message(mssg):
+	print("logging message:" + mssg)
+	$MessageLog.append_text(mssg)
+	$MessageLog.append_text("\n")
+	$MessageLog.scroll_to_line($MessageLog.get_line_count()-1)
+	
 
 func _on_enemy_move(attacker, attack):
 	print("Dummy turn!")

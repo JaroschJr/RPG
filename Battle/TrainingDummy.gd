@@ -11,3 +11,7 @@ func _ready():
 	health = maxHealth
 	move_list = [global_values._get_ability("slash")]
 	strength = 20
+	
+func _set_up(newname):
+	actorName = newname
+	$Name.text = actorName

@@ -41,4 +41,9 @@ offset_bottom = 448.0
 [node name="EnemySpawnRef" type="Node2D" parent="."]
 position = Vector2(640, 160)
 
+[node name="MessageLog" type="RichTextLabel" parent="."]
+offset_left = 960.0
+offset_right = 1280.0
+offset_bottom = 192.0
+
 [connection signal="button_down" from="EndTurnButton" to="." method="_on_end_turn_button_button_down"]
