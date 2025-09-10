@@ -1,7 +1,7 @@
 extends Node2D
 class_name Enemy
-var health
-var maxHealth
+var life
+var maxlife
 var mousedOver
 var move_list
 var strength
@@ -11,7 +11,7 @@ signal attacking(attacker, attack)
 signal death(my_self)
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$HealthBar.value = 100
+	$LifeBar.value = 100
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -33,9 +33,9 @@ func _on_area_2d_mouse_exited():
 func _damage(damagepoints, type):
 	#type does nothing now, but later attacks will have "types" (slash, blunt, fire, electric, ect)
 	#that entities will have different vulnerabilities too.
-	health = health - damagepoints
-	$HealthBar.value = 100 * health / maxHealth
-	if health <= 0:
+	life = life - damagepoints
+	$LifeBar.value = 100 * life / maxlife
+	if life <= 0:
 		_die()
 	
 func _move(): #what it does in it's turn.

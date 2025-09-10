@@ -29,6 +29,9 @@ func _use_ability(user, ability, target, battlefield):
 	elif user.stamina < ability.sp_cost:
 		battle_globals.battlefield_ref._log_message("Too tired!")
 		return
+	elif user.life == 0:
+		battle_globals.battlefield_ref._log_message("Too dead!")
+		return 
 	
 	battlefield._set_action_points( battlefield.action_points - ability.ap_cost)
 	user._spend_stamina(ability.sp_cost)

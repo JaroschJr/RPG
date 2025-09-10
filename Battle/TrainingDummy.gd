@@ -7,8 +7,8 @@ extends Enemy
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _ready():
 	super._ready()
-	maxHealth = 60
-	health = maxHealth
+	maxlife = 60
+	life = maxlife
 	move_list = [global_values._get_ability("slash")]
 	strength = 20
 	
