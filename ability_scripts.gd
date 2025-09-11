@@ -46,7 +46,7 @@ func _match_and_use_ability(user, ability, target, battlefield):
 			_heavy_slash(user, ability, target, battlefield)
 
 func _slash(user, ability_id, target, battlefield):
-	var damage = rng.randi_range(0, user.strength)
+	var damage = rng.randi_range(0, user.strength) + 1
 	print(user)
 	print(target)
 	target._damage(damage, "placeholder")
@@ -54,7 +54,7 @@ func _slash(user, ability_id, target, battlefield):
 	pass
 	
 func _heavy_slash(user, ability_id, target, battlefield):
-	var damage = rng.randi_range(0, user.strength * 2)
+	var damage = rng.randi_range(0, user.strength * 2) + 1
 	target._damage(damage, "placeholder")
 	battle_globals.battlefield_ref._log_message(str(user.actorName, " hit ", target.actorName, " for ", damage))
 	pass
