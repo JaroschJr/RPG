@@ -10,6 +10,8 @@ var inputs = {
 	"down": Vector2.DOWN
 }
 
+signal turn_advance(turns)
+
 @onready var ray = $RayCast2d
 
 func _process(delta):
@@ -37,6 +39,7 @@ func move(dir):
 		#position += inputs[dir] * tile_size
 		var tween = get_tree().create_tween()
 		tween.tween_property(self, "position", position + inputs[dir] * tile_size, 1.0/animation_speed).set_trans(Tween.TRANS_LINEAR)
+		turn_advance.emit(1)
 		moving = true
 		$AnimationPlayer.play(dir)
 		await tween.finished

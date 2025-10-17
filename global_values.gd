@@ -1,6 +1,7 @@
 extends Node
 
 const Ability_Data = preload("res://Ability_Data.gd")
+var overworld_scene
 
 var ability_dict = {
 	"slash": Ability_Data.new("slash","Slash", 1, 10),

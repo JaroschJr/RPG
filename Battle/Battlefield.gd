@@ -150,3 +150,10 @@ func _on_enemy_move(attacker, attack):
 func _on_enemy_death(dead_enemy):
 	enemies.remove_at(enemies.find(dead_enemy))
 	dead_enemy.queue_free()
+	if enemies.size() == 0:
+		fight_over()
+
+func fight_over():
+	#award gold treasure and whatever else
+	scene_switcher.end_battle(self)
+	
