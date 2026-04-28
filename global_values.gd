@@ -8,6 +8,13 @@ var ability_dict = {
 	"heavy_slash":Ability_Data.new("heavy_slash","Heavy Slash", 2, 15)
 }
 
+var enemy_dict = {
+	"training_dummy" : "TrainingDummy.tscn"
+}
+
+func get_enemy_filepath(enemy_id):
+	return enemy_dict[enemy_id]
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.

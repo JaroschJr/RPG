@@ -2,6 +2,10 @@ extends Node2D
 var turn
 var fight_countdown
 var rng
+var local_enemies
+
+const Battlefield = preload("res://Battle/Battlefield.gd")
+static var battlefield = preload("res://Battle/Battlefield.tscn")
 
 func _ready():
 	global_values.overworld_scene = self
@@ -24,7 +28,10 @@ func turn_pass(turns):
 	fight_countdown = fight_countdown - 1
 	if fight_countdown < 1:
 		fight_countdown = rng.randi_range(5,10)
-		var new_battle = load("res://Battle/Battlefield.tscn").instantiate()
+		var new_battle = battlefield.instantiate()
+		new_battle._spawn_enemies(["training_dummy", "training_dummy", "training_dummy" ])
+		#var Battlefield = load("res://Battle/Battlefield.tscn")
+		#var new_battle = Battlefield.new(["training_dummy"])
 		scene_switcher.start_battle(new_battle)
 	pass # Replace with function body.
 

@@ -6,17 +6,21 @@ var readied_ability
 var action_points
 var rng
 var turn_count
+#var spawn_list
 
 const BatleCharacter = preload("res://Battle/BatleCharacter.tscn")
 
+
+#func _init(list_of_enemies = ["training_dummy"]):
+#	spawn_list = list_of_enemies
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	print("ready runs")
 	_set_action_points(5)
 	battle_globals._set_battlefield_ref(self)
-	var tween = get_tree().create_tween().set_parallel(true)
 	#GDscript lacks true constructors the way Java does.
 	#this shamefull assemblage is the best I can aproximate.
-	var pMember = load("res://Battle/BatleCharacter.tscn")
 	rng = RandomNumberGenerator.new()
 	party = []
 	for i in range(7):#this works for any party size
@@ -32,32 +36,60 @@ func _ready():
 	center._open_ability_menu()
 	
 	#SpawnEnemies
+	#_spawn_enemies(["training_dummy"])
 	#This is an example for testing.
-	enemies = []
-	var enemyHub = $EnemySpawnRef.get_global_transform().origin
-	var dummy = load("res://Battle/TrainingDummy.tscn")
-	var enemy = dummy.instantiate()
-	add_child(enemy)
-	enemies.append(enemy)
-	enemy.position = enemyHub
-	enemy.position.x = enemy.position.x - 128
-	enemy.attacking.connect(_on_enemy_move)
-	enemy.death.connect(_on_enemy_death)
-	enemy._set_up("Target A")
-	
-	enemy = dummy.instantiate()
-	add_child(enemy)
-	enemies.append(enemy)
-	enemy.position = enemyHub
-	enemy.position.x = enemy.position.x + 128
-	enemy.attacking.connect(_on_enemy_move)
-	enemy.death.connect(_on_enemy_death)
-	enemy._set_up("Target B")
+	#enemies = []
+	#var enemy_left_ref= $EnemyLeftBound.get_global_transform().origin
+	#var enemy_right_ref = $EnemyRightBound.get_global_transform().origin
+	#var dummy = load("res://Battle/TrainingDummy.tscn")
+	#
+	#for i in range(3):
+		#var enemy = dummy.instantiate()
+		#add_child(enemy)
+		#enemies.append(enemy)
+	#
+	#for i in enemies.size():
+		#var enemy = enemies[i]
+		#enemy.position = enemy_left_ref
+		#enemy.position.x = enemy_left_ref.x + (i+1)*(enemy_right_ref.x / (enemies.size() + 1))
+		#enemy.attacking.connect(_on_enemy_move)
+		#enemy.death.connect(_on_enemy_death)
+		#enemy._set_up("Target")
 	
 	turn_count = 1
 	_log_message(str("--- Turn ", turn_count , " ---"))
 	
 
+func _spawn_enemies(to_spawn):
+	to_spawn.sort()
+	enemies = []
+	#This is the straight line enemies will be placed along.
+	var enemy_left_ref= $EnemyLeftBound.get_global_transform().origin
+	var enemy_right_ref = $EnemyRightBound.get_global_transform().origin
+	
+	#This odd twisty structure is to make sure that repeat enemeis don't need to get loaded every time.
+	#To improve performance.
+	var new_enemy = to_spawn[0]
+	var enemy_path = str("res://Battle/", global_values.get_enemy_filepath(new_enemy) )
+	var enemy_type = load(enemy_path)
+	while to_spawn.size() > 0:
+		if enemy_path != to_spawn[0]: #this will never happen the first time 
+			new_enemy = to_spawn[0]
+			enemy_path = str("res://Battle/", global_values.get_enemy_filepath(new_enemy) )
+			enemy_type = load(enemy_path)
+		
+		var enemy = enemy_type.instantiate()
+		add_child(enemy)
+		enemies.append(enemy)
+		to_spawn.pop_front()
+	
+	for i in enemies.size():
+		var enemy = enemies[i]
+		enemy.position = enemy_left_ref
+		enemy.position.x = enemy_left_ref.x + (i+1)*(enemy_right_ref.x / (enemies.size() + 1))
+		enemy.attacking.connect(_on_enemy_move)
+		enemy.death.connect(_on_enemy_death)
+		enemy._set_up("Target")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
